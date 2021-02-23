@@ -1,0 +1,312 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #ebf5fc;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+main {
+  width: 100vw;
+  height: 100vh;
+}
+.main-container {
+  margin: 0 2rem;
+}
+
+.nav-container {
+  height: 4rem;
+  font-size: 1rem;
+  border: none;
+  background: linear-gradient(
+    to right,
+    rgba(235, 245, 252, 0.6),
+    rgba(235, 245, 252, 0.8)
+  );
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  border-bottom: 2px solid #187683;
+  box-shadow: -6px -6px 15px rgba(255, 255, 255, 1),
+    6px 6px 15px rgba(0, 0, 0, 0.1);
+}
+.nav-container div {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  color: #1f1e1e;
+}
+.nav-container div span {
+  margin-right: 1rem;
+}
+.nav-container button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #dfdbdb;
+  border-radius: 6px;
+}
+.nav-container button:focus {
+  outline: none;
+}
+.nav-container button:hover {
+  box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.5),
+    inset 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.nav-container button span {
+  position: absolute;
+  background-color: red;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  font-size: 0.9rem;
+}
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.product-card {
+  width: 40%;
+  height: 20%;
+  margin: 2rem;
+  padding: 1rem;
+  font-family: "Roboto", sans-serif;
+  border-radius: 6px;
+  background-color: #ebf5fc;
+  box-shadow: -6px -6px 20px rgba(255, 255, 255, 1),
+    6px 6px 20px rgba(0, 0, 0, 0.1);
+}
+.product-card:hover {
+  box-shadow: inset -6px -6px 10px rgba(255, 255, 255, 0.5),
+    inset 6px 6px 10px rgba(0, 0, 0, 0.05);
+}
+.product-card .card-title:first-child {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #32a3b1;
+}
+.product-card .card-title .desc {
+  font-size: 0.8rem;
+  color: #686666;
+}
+.product-card .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product-card .card-footer button {
+  cursor: pointer;
+  box-shadow: -4px -4px 15px rgba(255, 255, 255, 1),
+    4px 4px 15px rgba(0, 0, 0, 0.1);
+  color: #fff4f4;
+  background-color: #187683;
+  border: none;
+  height: 2rem;
+  width: 7rem;
+  border-radius: 16px;
+}
+.product-card .card-footer button:hover {
+  box-shadow: inset -1px -1px 10px rgba(255, 255, 255, 0.5),
+    inset 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+.product-card .card-footer button:focus {
+  outline: none;
+}
+.cart-container {
+  margin: 2rem;
+}
+.cart-total {
+  text-align: end;
+  margin-right: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.detail-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem;
+  padding: 1rem;
+  font-family: "Roboto", sans-serif;
+  border-radius: 6px;
+  background-color: #ebf5fc;
+  box-shadow: -6px -6px 20px rgba(255, 255, 255, 1),
+    6px 6px 20px rgba(0, 0, 0, 0.1);
+}
+.detail-container:hover {
+  box-shadow: inset -6px -6px 10px rgba(255, 255, 255, 0.5),
+    inset 6px 6px 10px rgba(0, 0, 0, 0.05);
+}
+.detail-container .detail-title h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #32a3b1;
+}
+.detail-container .detail-title p {
+  font-size: 0.8rem;
+  color: #686666;
+}
+.detail-content p {
+  margin: 0;
+  padding: 0;
+}
+.detail-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+.detail-content .qty {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.detail-content .qty input {
+  width: 5rem;
+  margin-right: 1rem;
+}
+.detail-content .qty span {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #dfdbdb;
+  border-radius: 6px;
+  box-shadow: -4px -4px 15px rgba(255, 255, 255, 1),
+    4px 4px 15px rgba(0, 0, 0, 0.1);
+}
+.detail-content .qty span:hover {
+  box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.5),
+    inset 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 35rem;
+  font-family: "Roboto", sans-serif;
+}
+.form-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.form .form-content {
+  width: 25rem;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  box-shadow: -6px -6px 20px rgba(255, 255, 255, 1),
+    6px 6px 20px rgba(0, 0, 0, 0.1);
+}
+.form .form-content p {
+  font-size: 1.2rem;
+}
+.field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  width: 20rem;
+  height: 2rem;
+}
+.field input,
+.field textarea {
+  border: none;
+  background: #f0eff7;
+  box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.5),
+    4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.5),
+    inset 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.field:last-child {
+  margin: 3rem 0;
+}
+.field button {
+  cursor: pointer;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  box-shadow: -4px -4px 15px rgba(255, 255, 255, 1),
+    4px 4px 15px rgba(0, 0, 0, 0.1);
+}
+.field button:first-child {
+  background-color: #187683;
+  color: #ebf5fc;
+}
+.field button:focus {
+  outline: none;
+}
+.field button:hover {
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1),
+    inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.address {
+  height: 3.5rem;
+}
+.address textarea {
+  height: 3rem;
+  width: 10.7rem;
+}
+.thank-container {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thank-content {
+  width: 60%;
+  text-align: center;
+  box-shadow: -6px -6px 20px rgba(255, 255, 255, 1),
+    6px 6px 20px rgba(0, 0, 0, 0.1);
+}
+.thank-content button {
+  margin: 2rem 0;
+  cursor: pointer;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  box-shadow: -4px -4px 15px rgba(255, 255, 255, 1),
+    4px 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #187683;
+  color: #ebf5fc;
+}
+.thank-content button:focus {
+  outline: none;
+  background-color: tomato;
+}
+.thank-content button:hover {
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1),
+    inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
