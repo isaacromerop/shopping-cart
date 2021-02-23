@@ -1,19 +1,21 @@
 import React from "react";
+import { removeFromCart } from "../../../redux/Shopping/shopping-actions";
+import { connect } from "react-redux";
 
-const ProductDetail = () => {
+const ProductDetail = ({ prod, removeFromCart }) => {
   return (
     <div className="detail-container">
       <div className="detail-title">
-        <h3>Title</h3>
-        <p>Product Category</p>
+        <h3>{prod.name}</h3>
+        <p>{prod.category}</p>
       </div>
       <div className="detail-content">
         <div className="unit-price">
-          <p>$ 104.00</p>
+          <p>$ {prod.price}</p>
         </div>
         <div className="qty">
           <input type="number" min="1" value="1" />
-          <span>
+          <span onClick={() => removeFromCart(prod.id)}>
             <img src="/icons/trash-bin.svg" width="30px" alt="waste-bin" />
           </span>
         </div>
@@ -25,4 +27,12 @@ const ProductDetail = () => {
   );
 };
 
-export default ProductDetail;
+const mapDispatchToProp = (dispatch) => {
+  return {
+    removeFromCart: (id) => {
+      dispatch(removeFromCart(id));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProp)(ProductDetail);

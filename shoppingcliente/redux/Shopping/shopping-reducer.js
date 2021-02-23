@@ -36,9 +36,19 @@ const shopReducer = (state = initialState, action) => {
         cart: state.cart.filter((prod) => prod.id !== action.payload.id),
       };
     case actionTypes.ADJUST_QTY:
-      return {};
+      return {
+        ...state,
+        cart: state.cart.map((prod) =>
+          prod.id === action.payload.id
+            ? { ...item, qty: +action.payload.value }
+            : item
+        ),
+      };
     case actionTypes.LOAD_CURRENT_ITEM:
-      return {};
+      return {
+        ...state,
+        currentItem: action.payload,
+      };
 
     default:
       return state;
