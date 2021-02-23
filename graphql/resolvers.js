@@ -13,15 +13,24 @@ const resolvers = {
   },
   Mutation: {
     placeOrder: async (_, { input }) => {
-      const { total, products, customerId, address, phone, email } = input;
+      const {
+        total,
+        products,
+        customerId,
+        address,
+        phone,
+        email,
+        name,
+      } = await input;
       try {
         const order = await Orders.create({
-          total,
           products,
+          total,
           customerId,
           address,
           phone,
           email,
+          name,
         });
         return order;
       } catch (error) {

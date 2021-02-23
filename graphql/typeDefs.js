@@ -21,10 +21,11 @@ const typeDefs = gql`
   input OrderInput {
     products: Int
     total: Float
-    customerId: Int
+    customerId: ID
     address: String
-    phone: Int
+    phone: String
     email: String
+    name: String
   }
 
   type Query {

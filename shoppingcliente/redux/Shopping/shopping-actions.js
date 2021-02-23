@@ -34,3 +34,13 @@ export const adjustQty = (id, value) => {
     },
   };
 };
+
+export const setCurrentOrder = (id, name) => {
+  return {
+    type: actionTypes.SET_CURRENT_ORDER,
+    payload: {
+      id,
+      name,
+    },
+  };
+};

@@ -1,8 +1,9 @@
 import React from "react";
 import Layout from "../components/Layout/Layout";
 import { useRouter } from "next/router";
+import { connect } from "react-redux";
 
-const Thankyou = () => {
+const Thankyou = ({ currentOrder }) => {
   const router = useRouter();
   return (
     <Layout>
@@ -10,8 +11,8 @@ const Thankyou = () => {
         <div className="thank-content">
           <h1>Thank you for your purchase!</h1>
           <p>
-            John, we have created your order #asd123. Your items will be soon at
-            your door.
+            {`${currentOrder.name}, we have created your order ${currentOrder.id}. Your items will be soon at
+            your door.`}
           </p>
           <button onClick={() => router.push("/")}>Start again</button>
         </div>
@@ -20,4 +21,10 @@ const Thankyou = () => {
   );
 };
 
-export default Thankyou;
+const mapStateToProp = (state) => {
+  return {
+    currentOrder: state.shop.currentOrder,
+  };
+};
+
+export default connect(mapStateToProp)(Thankyou);

@@ -4,9 +4,24 @@ import ProductDetail from "../components/ProductCard/ProductDetail.jsx/ProductDe
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
+import { setCurrentOrder } from "../redux/Shopping/shopping-actions";
+import { useMutation, gql } from "@apollo/client";
+import { useRouter } from "next/router";
 
-const Cart = ({ cart }) => {
+const PLACE_ORDER = gql`
+  mutation placeOrder($input: OrderInput) {
+    placeOrder(input: $input) {
+      id
+      products
+      total
+    }
+  }
+`;
+
+const Cart = ({ cart, setCurrentOrder }) => {
   const [totalPrice, setTotalPrice] = useState(0);
+  const [placeOrder] = useMutation(PLACE_ORDER);
+  const router = useRouter();
 
   useEffect(() => {
     let price = 0;
@@ -18,21 +33,46 @@ const Cart = ({ cart }) => {
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      id: "",
+      products: cart.length,
+      total: totalPrice,
+      customerId: "",
       address: "",
       phone: "",
       email: "",
+      name: "",
     },
     validationSchema: Yup.object({
       name: Yup.string().required("Please provide your name."),
-      id: Yup.string().required("Please provide your id."),
+      customerId: Yup.string().required("Please provide your id."),
       address: Yup.string().required("Please provide your address."),
-      phone: Yup.number().required("Please provide your phone."),
+      phone: Yup.number("Phone must be numeric.").required(
+        "Please provide your phone."
+      ),
       email: Yup.string()
         .email("please provide valid email.")
         .required("Please provide your email."),
     }),
+    onSubmit: async (values) => {
+      try {
+        const { data } = await placeOrder({
+          variables: {
+            input: {
+              products: values.products,
+              total: values.total,
+              customerId: values.customerId,
+              address: values.address,
+              phone: values.phone,
+              email: values.email,
+              name: values.name,
+            },
+          },
+        });
+        setCurrentOrder(data.placeOrder.id, values.name);
+        router.push("/thankyou");
+      } catch (error) {
+        console.log(error);
+      }
+    },
   });
 
   return (
@@ -55,32 +95,62 @@ const Cart = ({ cart }) => {
               <p>Ready to Order?</p>
             </div>
             <div className="form-content">
-              <form>
+              <form onSubmit={formik.handleSubmit}>
                 <div>
                   <p>Customer Information</p>
                 </div>
                 <div className="field">
                   <label htmlFor="name">Full name:</label>
-                  <input name="name" type="text" />
+                  <input
+                    name="name"
+                    type="text"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.name}
+                  />
                 </div>
                 <div className="field">
-                  <label htmlFor="id">ID:</label>
-                  <input name="id" type="text" />
+                  <label htmlFor="customerId">ID:</label>
+                  <input
+                    name="customerId"
+                    type="text"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.customerId}
+                  />
                 </div>
                 <div className="field address">
                   <label htmlFor="address">Address:</label>
-                  <textarea name="address" type="text" />
+                  <textarea
+                    name="address"
+                    type="text"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.address}
+                  />
                 </div>
                 <div className="field">
                   <label htmlFor="phone">Phone number:</label>
-                  <input type="text" name="email" />
+                  <input
+                    type="phone"
+                    name="phone"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.phone}
+                  />
                 </div>
                 <div className="field">
                   <label htmlFor="email">Email:</label>
-                  <input type="email" name="email" />
+                  <input
+                    type="email"
+                    name="email"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}
+                  />
                 </div>
                 <div className="field">
-                  <button>Place Order</button>
+                  <button type="submit">Place Order</button>
                   <button>
                     <a href="#list">Back to list</a>
                   </button>
@@ -100,4 +170,10 @@ const mapStateToProp = (state) => {
   };
 };
 
-export default connect(mapStateToProp)(Cart);
+const mapDispatchToProp = (dispatch) => {
+  return {
+    setCurrentOrder: (id, name) => dispatch(setCurrentOrder(id, name)),
+  };
+};
+
+export default connect(mapStateToProp, mapDispatchToProp)(Cart);

@@ -3,7 +3,7 @@ import * as actionTypes from "./shopping-types";
 const initialState = {
   products: [],
   cart: [],
-  currentItem: null,
+  currentOrder: null,
 };
 
 const shopReducer = (state = initialState, action) => {
@@ -43,6 +43,11 @@ const shopReducer = (state = initialState, action) => {
             ? { ...prod, qty: +action.payload.value }
             : prod
         ),
+      };
+    case actionTypes.SET_CURRENT_ORDER:
+      return {
+        ...state,
+        currentOrder: action.payload,
       };
 
     default:
