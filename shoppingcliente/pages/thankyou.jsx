@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 const Thankyou = ({ currentOrder }) => {
   const router = useRouter();
-  return (
+  return currentOrder ? (
     <Layout>
       <div className="thank-container">
         <div className="thank-content">
@@ -14,6 +14,16 @@ const Thankyou = ({ currentOrder }) => {
             {`${currentOrder.name}, we have created your order ${currentOrder.id}. Your items will be soon at
             your door.`}
           </p>
+          <button onClick={() => router.push("/")}>Start again</button>
+        </div>
+      </div>
+    </Layout>
+  ) : (
+    <Layout>
+      <div className="thank-container">
+        <div className="thank-content">
+          <h1>No orders placed.</h1>
+          <p>Follow next button to place an order:</p>
           <button onClick={() => router.push("/")}>Start again</button>
         </div>
       </div>

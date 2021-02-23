@@ -1,8 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addToCart } from "../../redux/Shopping/shopping-actions";
+import Cookie from "js-cookie";
 
-const ProductCard = ({ item, addToCart }) => {
+const ProductCard = ({ item, addToCart, cart }) => {
+  const handleAdd = () => {
+    Cookie.set("cart", JSON.stringify(cart));
+    addToCart(item.id);
+  };
+
   return (
     <div className="product-card">
       <div className="card-title">
@@ -13,7 +19,7 @@ const ProductCard = ({ item, addToCart }) => {
         <p>{item.description}</p>
       </div>
       <div className="card-footer">
-        <button onClick={() => addToCart(item.id)}>Add to cart</button>
+        <button onClick={handleAdd}>Add to cart</button>
         <p>$ {item.price}</p>
       </div>
     </div>
@@ -22,10 +28,14 @@ const ProductCard = ({ item, addToCart }) => {
 
 const mapDispatchToProp = (dispatch) => {
   return {
-    addToCart: (id) => {
-      dispatch(addToCart(id));
-    },
+    addToCart: (id) => dispatch(addToCart(id)),
   };
 };
 
-export default connect(null, mapDispatchToProp)(ProductCard);
+const mapStateToProp = (state) => {
+  return {
+    cart: state.shop.cart,
+  };
+};
+
+export default connect(mapStateToProp, mapDispatchToProp)(ProductCard);

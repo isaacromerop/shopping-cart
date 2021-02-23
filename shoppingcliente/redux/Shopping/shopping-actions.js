@@ -44,3 +44,9 @@ export const setCurrentOrder = (id, name) => {
     },
   };
 };
+
+export const clearCart = () => {
+  return {
+    type: actionTypes.CLEAR_CART,
+  };
+};

@@ -4,9 +4,10 @@ import ProductDetail from "../components/ProductCard/ProductDetail.jsx/ProductDe
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
-import { setCurrentOrder } from "../redux/Shopping/shopping-actions";
+import { setCurrentOrder, clearCart } from "../redux/Shopping/shopping-actions";
 import { useMutation, gql } from "@apollo/client";
 import { useRouter } from "next/router";
+import Cookie from "js-cookie";
 
 const PLACE_ORDER = gql`
   mutation placeOrder($input: OrderInput) {
@@ -18,7 +19,7 @@ const PLACE_ORDER = gql`
   }
 `;
 
-const Cart = ({ cart, setCurrentOrder }) => {
+const Cart = ({ cart, setCurrentOrder, clearCart }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [placeOrder] = useMutation(PLACE_ORDER);
   const router = useRouter();
@@ -29,6 +30,7 @@ const Cart = ({ cart, setCurrentOrder }) => {
       price += item.qty * item.price;
     });
     setTotalPrice(price);
+    Cookie.set("cart", JSON.stringify(cart));
   }, [cart, totalPrice, setTotalPrice]);
 
   const formik = useFormik({
@@ -67,6 +69,8 @@ const Cart = ({ cart, setCurrentOrder }) => {
             },
           },
         });
+        clearCart();
+        Cookie.remove("cart");
         setCurrentOrder(data.placeOrder.id, values.name);
         router.push("/thankyou");
       } catch (error) {
@@ -173,6 +177,7 @@ const mapStateToProp = (state) => {
 const mapDispatchToProp = (dispatch) => {
   return {
     setCurrentOrder: (id, name) => dispatch(setCurrentOrder(id, name)),
+    clearCart: () => dispatch(clearCart()),
   };
 };
 

@@ -311,3 +311,36 @@ main {
   box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1),
     inset 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width: 700px) {
+  .product-card {
+    width: 95%;
+    height: 20%;
+  }
+  .cart-container {
+    margin: 1rem 0;
+    width: 100%;
+  }
+  .detail-container {
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  .detail-container .detail-title {
+    width: 10rem;
+  }
+  .detail-content {
+    flex-direction: column;
+  }
+  .detail-content .qty input {
+    width: 2rem;
+    margin: 1rem 0;
+  }
+  .form .form-content {
+    width: 20rem;
+  }
+  form .field,
+  form div {
+    padding: 0 1rem;
+  }
+}

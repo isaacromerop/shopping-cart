@@ -1,8 +1,11 @@
 import * as actionTypes from "./shopping-types";
+import Cookie from "js-cookie";
+
+const cookie = Cookie.getJSON("cart");
 
 const initialState = {
   products: [],
-  cart: [],
+  cart: cookie || [],
   currentOrder: null,
 };
 
@@ -48,6 +51,11 @@ const shopReducer = (state = initialState, action) => {
       return {
         ...state,
         currentOrder: action.payload,
+      };
+    case actionTypes.CLEAR_CART:
+      return {
+        ...state,
+        cart: [],
       };
 
     default:

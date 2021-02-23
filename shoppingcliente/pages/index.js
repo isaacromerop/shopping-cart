@@ -23,6 +23,7 @@ const Home = ({ setProducts }) => {
   if (data && data.getProducts) {
     setProducts(data.getProducts);
   }
+
   return (
     <Layout>
       <div className="content-container">
@@ -38,9 +39,7 @@ const Home = ({ setProducts }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setProducts: (data) => {
-      dispatch(setProducts(data));
-    },
+    setProducts: (data) => dispatch(setProducts(data)),
   };
 };
 
