@@ -1,6 +1,8 @@
 import React from "react";
 import NavBar from "../NavBar/NavBar";
 import Head from "next/head";
+import { motion } from "framer-motion";
+import { showUp } from "../../styles/animations";
 
 const Layout = ({ children }) => {
   return (
@@ -19,12 +21,12 @@ const Layout = ({ children }) => {
           content="width=device-width, initial-scale=1"
         ></meta>
       </Head>
-      <main>
+      <motion.main variants={showUp} initial="hidden" animate="visible">
         <div className="main-container">
           <NavBar />
           {children}
         </div>
-      </main>
+      </motion.main>
     </>
   );
 };

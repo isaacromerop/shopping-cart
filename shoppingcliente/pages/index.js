@@ -3,6 +3,8 @@ import ProductCard from "../components/ProductCard/ProductCard";
 import { useQuery, gql } from "@apollo/client";
 import { connect } from "react-redux";
 import { setProducts } from "../redux/Shopping/shopping-actions";
+import { scaleUp } from "../styles/animations";
+import { motion } from "framer-motion";
 
 const GET_PRODUCTS = gql`
   query getProducts {
@@ -26,13 +28,18 @@ const Home = ({ setProducts }) => {
 
   return (
     <Layout>
-      <div className="content-container">
+      <motion.div
+        className="content-container"
+        variants={scaleUp}
+        initial="hidden"
+        animate="visible"
+      >
         {data &&
           data.getProducts &&
           data.getProducts.map((item) => (
             <ProductCard key={item.id} item={item} />
           ))}
-      </div>
+      </motion.div>
     </Layout>
   );
 };

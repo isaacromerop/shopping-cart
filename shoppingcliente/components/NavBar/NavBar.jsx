@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
+import { appearUp } from "../../styles/animations";
 
 const NavBar = ({ cart }) => {
   const router = useRouter();
@@ -13,7 +15,12 @@ const NavBar = ({ cart }) => {
     setCartCount(count);
   }, [cart, cartCount]);
   return (
-    <div className="nav-container">
+    <motion.div
+      className="nav-container"
+      variants={appearUp}
+      initial="hidden"
+      animate="visible"
+    >
       <div onClick={() => router.push("/")}>
         <span>
           <img src="/icons/astronauta.svg" alt="brand-logo" width="40px" />
@@ -30,7 +37,7 @@ const NavBar = ({ cart }) => {
           <span>{cartCount}</span>
         </button>
       ) : null}
-    </div>
+    </motion.div>
   );
 };
 

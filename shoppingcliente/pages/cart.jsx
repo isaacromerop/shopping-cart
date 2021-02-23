@@ -8,6 +8,8 @@ import { setCurrentOrder, clearCart } from "../redux/Shopping/shopping-actions";
 import { useMutation, gql } from "@apollo/client";
 import { useRouter } from "next/router";
 import Cookie from "js-cookie";
+import { scaleUp } from "../styles/animations";
+import { motion } from "framer-motion";
 
 const PLACE_ORDER = gql`
   mutation placeOrder($input: OrderInput) {
@@ -79,9 +81,14 @@ const Cart = ({ cart, setCurrentOrder, clearCart }) => {
     },
   });
 
-  return (
+  return cart.length > 0 ? (
     <Layout>
-      <div className="cart-container">
+      <motion.div
+        className="cart-container"
+        variants={scaleUp}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="cart-title">
           <h2>Shopping Cart</h2>
         </div>
@@ -162,6 +169,16 @@ const Cart = ({ cart, setCurrentOrder, clearCart }) => {
               </form>
             </div>
           </div>
+        </div>
+      </motion.div>
+    </Layout>
+  ) : (
+    <Layout>
+      <div className="thank-container">
+        <div className="thank-content">
+          <h1>There are not items in your cart.</h1>
+          <p>Follow next button to select items:</p>
+          <button onClick={() => router.push("/")}>Select Items</button>
         </div>
       </div>
     </Layout>

@@ -343,4 +343,7 @@ main {
   form div {
     padding: 0 1rem;
   }
+  .thank-content {
+    width: 100%;
+  }
 }
