@@ -1,8 +1,18 @@
-import React from "react";
-import { removeFromCart } from "../../../redux/Shopping/shopping-actions";
+import React, { useState } from "react";
+import {
+  removeFromCart,
+  adjustQty,
+} from "../../../redux/Shopping/shopping-actions";
 import { connect } from "react-redux";
 
-const ProductDetail = ({ prod, removeFromCart }) => {
+const ProductDetail = ({ prod, removeFromCart, adjustQty }) => {
+  const [qty, setQty] = useState(prod.qty);
+
+  const handleChange = (e) => {
+    setQty(e);
+    adjustQty(prod.id, e);
+  };
+
   return (
     <div className="detail-container">
       <div className="detail-title">
@@ -14,13 +24,19 @@ const ProductDetail = ({ prod, removeFromCart }) => {
           <p>$ {prod.price}</p>
         </div>
         <div className="qty">
-          <input type="number" min="1" value="1" />
+          <input
+            onChange={(e) => handleChange(e.target.value)}
+            type="number"
+            min="1"
+            name="value"
+            value={qty}
+          />
           <span onClick={() => removeFromCart(prod.id)}>
             <img src="/icons/trash-bin.svg" width="30px" alt="waste-bin" />
           </span>
         </div>
         <div className="total">
-          <p>$ 208.00</p>
+          <p>$ {prod.qty * prod.price}</p>
         </div>
       </div>
     </div>
@@ -29,9 +45,8 @@ const ProductDetail = ({ prod, removeFromCart }) => {
 
 const mapDispatchToProp = (dispatch) => {
   return {
-    removeFromCart: (id) => {
-      dispatch(removeFromCart(id));
-    },
+    removeFromCart: (id) => dispatch(removeFromCart(id)),
+    adjustQty: (id, value) => dispatch(adjustQty(id, value)),
   };
 };
 

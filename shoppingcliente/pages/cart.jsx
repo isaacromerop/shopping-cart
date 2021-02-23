@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import ProductDetail from "../components/ProductCard/ProductDetail.jsx/ProductDetail";
 import { useFormik } from "formik";
@@ -6,6 +6,35 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 
 const Cart = ({ cart }) => {
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    let price = 0;
+    cart.forEach((item) => {
+      price += item.qty * item.price;
+    });
+    setTotalPrice(price);
+  }, [cart, totalPrice, setTotalPrice]);
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      id: "",
+      address: "",
+      phone: "",
+      email: "",
+    },
+    validationSchema: Yup.object({
+      name: Yup.string().required("Please provide your name."),
+      id: Yup.string().required("Please provide your id."),
+      address: Yup.string().required("Please provide your address."),
+      phone: Yup.number().required("Please provide your phone."),
+      email: Yup.string()
+        .email("please provide valid email.")
+        .required("Please provide your email."),
+    }),
+  });
+
   return (
     <Layout>
       <div className="cart-container">
@@ -18,7 +47,7 @@ const Cart = ({ cart }) => {
           ))}
         </div>
         <div className="cart-total">
-          <p>Total: $258.00</p>
+          <p>Total: $ {totalPrice}</p>
         </div>
         <div className="form">
           <div>

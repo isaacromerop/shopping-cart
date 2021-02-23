@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { connect } from "react-redux";
 
-const NavBar = () => {
+const NavBar = ({ cart }) => {
   const router = useRouter();
+  const [cartCount, setCartCount] = useState(0);
+  useEffect(() => {
+    let count = 0;
+    cart.forEach((item) => {
+      count += item.qty;
+    });
+    setCartCount(count);
+  }, [cart, cartCount]);
   return (
     <div className="nav-container">
       <div onClick={() => router.push("/")}>
         <span>
-          <img
-            src="/icons/astronauta.svg"
-            alt="brand-logo"
-            width="40px"
-          />
+          <img src="/icons/astronauta.svg" alt="brand-logo" width="40px" />
         </span>
         Fast Shopping
       </div>
@@ -22,11 +27,17 @@ const NavBar = () => {
             alt="shopping-cart"
             width="40px"
           />
-          <span>1</span>
+          <span>{cartCount}</span>
         </button>
       ) : null}
     </div>
   );
 };
 
-export default NavBar;
+const mapStateToProp = (state) => {
+  return {
+    cart: state.shop.cart,
+  };
+};
+
+export default connect(mapStateToProp)(NavBar);
