@@ -1,6 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+import { addToCart } from "../../redux/Shopping/shopping-actions";
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item, addToCart }) => {
   return (
     <div className="product-card">
       <div className="card-title">
@@ -11,11 +13,19 @@ const ProductCard = ({ item }) => {
         <p>{item.description}</p>
       </div>
       <div className="card-footer">
-        <button>Add to cart</button>
+        <button onClick={() => addToCart(item.id)}>Add to cart</button>
         <p>$ {item.price}</p>
       </div>
     </div>
   );
 };
 
-export default ProductCard;
+const mapDispatchToProp = (dispatch) => {
+  return {
+    addToCart: (id) => {
+      dispatch(addToCart(id));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProp)(ProductCard);

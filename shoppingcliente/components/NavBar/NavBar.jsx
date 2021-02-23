@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 
 const NavBar = () => {
   const router = useRouter();
-  console.log(router);
   return (
     <div className="nav-container">
       <div onClick={() => router.push("/")}>

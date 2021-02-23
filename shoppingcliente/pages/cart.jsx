@@ -1,8 +1,11 @@
 import React from "react";
 import Layout from "../components/Layout/Layout";
 import ProductDetail from "../components/ProductCard/ProductDetail.jsx/ProductDetail";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { connect } from "react-redux";
 
-const Cart = () => {
+const Cart = ({ cart }) => {
   return (
     <Layout>
       <div className="cart-container">
@@ -10,7 +13,9 @@ const Cart = () => {
           <h2>Shopping Cart</h2>
         </div>
         <div id="list" className="cart-content">
-          <ProductDetail />
+          {cart.map((prod) => (
+            <ProductDetail key={prod.id} prod={prod} />
+          ))}
         </div>
         <div className="cart-total">
           <p>Total: $258.00</p>
@@ -60,4 +65,10 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+const mapStateToProp = (state) => {
+  return {
+    cart: state.shop.cart,
+  };
+};
+
+export default connect(mapStateToProp)(Cart);
