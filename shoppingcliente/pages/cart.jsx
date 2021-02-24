@@ -120,6 +120,11 @@ const Cart = ({ cart, setCurrentOrder, clearCart }) => {
                     value={formik.values.name}
                   />
                 </div>
+                {formik.touched.name && formik.errors.name && (
+                  <div className="error-message">
+                    <h6 className="error">{formik.errors.name}</h6>
+                  </div>
+                )}
                 <div className="field">
                   <label htmlFor="customerId">ID:</label>
                   <input
@@ -130,6 +135,11 @@ const Cart = ({ cart, setCurrentOrder, clearCart }) => {
                     value={formik.values.customerId}
                   />
                 </div>
+                {formik.touched.customerId && formik.errors.customerId && (
+                  <div className="error-message">
+                    <h6 className="error">{formik.errors.customerId}</h6>
+                  </div>
+                )}
                 <div className="field address">
                   <label htmlFor="address">Address:</label>
                   <textarea
@@ -140,6 +150,11 @@ const Cart = ({ cart, setCurrentOrder, clearCart }) => {
                     value={formik.values.address}
                   />
                 </div>
+                {formik.touched.address && formik.errors.address && (
+                  <div className="error-message">
+                    <h6 className="error">{formik.errors.address}</h6>
+                  </div>
+                )}
                 <div className="field">
                   <label htmlFor="phone">Phone number:</label>
                   <input
@@ -150,6 +165,11 @@ const Cart = ({ cart, setCurrentOrder, clearCart }) => {
                     value={formik.values.phone}
                   />
                 </div>
+                {formik.touched.phone && formik.errors.phone && (
+                  <div className="error-message">
+                    <h6 className="error">{formik.errors.phone}</h6>
+                  </div>
+                )}
                 <div className="field">
                   <label htmlFor="email">Email:</label>
                   <input
@@ -160,6 +180,11 @@ const Cart = ({ cart, setCurrentOrder, clearCart }) => {
                     value={formik.values.email}
                   />
                 </div>
+                {formik.touched.email && formik.errors.email && (
+                  <div className="error-message">
+                    <h6 className="error">{formik.errors.email}</h6>
+                  </div>
+                )}
                 <div className="field">
                   <button type="submit">Place Order</button>
                   <button>
