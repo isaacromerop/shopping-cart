@@ -4,9 +4,7 @@ _Shopping cart using Redux, MySql, GraphQL, Apollo and Next Js_
 
 ## Starting 🚀
 
-_Following next instructions you will be able to run the project locally and have fun testing it._
-
-Check **Deployment** to check how to deploy.
+_Following next instructions you will be able to run the project locally and have fun playing around with it._
 
 ### Pre-requisites 📋
 
@@ -20,7 +18,7 @@ node --version
 
 _If you can see the version, then you are ready to go, otherwise, install Node JS from node webpage first._
 
-### Instalación 🔧
+### Installation 🔧
 
 _Follow next steps to test the project in your local environment._
 
