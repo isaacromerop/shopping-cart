@@ -28,6 +28,13 @@ _Clone Repo_
 git clone https://github.com/isaacromerop/shopping-cart.git
 ```
 
+_Now you have to configure your local database._
+
+_In order to do that, you will need to access "config" folder inside "shopping" and
+modify the username and the password of your own local environment._
+
+_Last, import the .sql file which contains the database Schema, tables and some dummy data._
+
 _Once finished, start a command line inside shopping folder and then initiate npm._
 
 ```
