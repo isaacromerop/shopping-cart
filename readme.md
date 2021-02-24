@@ -4,7 +4,7 @@ _Shopping cart using Redux, MySql, GraphQL, Apollo and Next Js_
 
 ## Starting 🚀
 
-_Following next instructions you will be able to run the proyect locally and have fun testing it._
+_Following next instructions you will be able to run the project locally and have fun testing it._
 
 Check **Deployment** to check how to deploy.
 
@@ -22,7 +22,7 @@ _If you can see the version, then you are ready to go, otherwise, install Node J
 
 ### Instalación 🔧
 
-_Follow next steps to test the proyect in your local environment._
+_Follow next steps to test the project in your local environment._
 
 _Clone Repo_
 
@@ -58,9 +58,9 @@ _Now you have both server and client side running._
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
-## Tech used 🛠️
+## Techs used 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+_Main tools of this project:_
 
 - [GraphQL](https://graphql.org/) - A query language for your API
 - [Next.js](https://nextjs.org/) - The React Framework for Production
