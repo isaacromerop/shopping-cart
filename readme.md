@@ -54,7 +54,7 @@ npm run dev
 
 _Now you have both server and client side running._
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+_Open chrome (or your preferred browser) and go to localhost:3000._
 
 ## Techs used 🛠️
 
