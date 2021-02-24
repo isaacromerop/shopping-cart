@@ -65,6 +65,7 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 - [GraphQL](https://graphql.org/) - A query language for your API
 - [Next.js](https://nextjs.org/) - The React Framework for Production
 - [Apollo](https://www.apollographql.com/) - The Apollo Data Graph Platform
+- [MySQL](https://www.mysql.com/) - The world's most popular open source database
 
 ## Authors ✒️
 
@@ -78,4 +79,4 @@ _Created and developed by_
 
 ---
 
-⌨️ con ❤️ por [isaacromerop](https://github.com/isaacromerop) 😊
+⌨️ with ❤️ by [isaacromerop](https://github.com/isaacromerop) 😊
