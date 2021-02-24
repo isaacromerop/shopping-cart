@@ -311,6 +311,33 @@ main {
   box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1),
     inset 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
+.pagination-container {
+  height: 4rem;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+}
+.pagination li {
+  list-style: none;
+}
+.pagination li a {
+  cursor: pointer;
+  list-style: none;
+  border: 1px solid #000;
+  margin: 0 1rem;
+  padding: 0 0.3rem;
+  border: none;
+  border-radius: 6px;
+  box-shadow: -6px -6px 10px rgba(255, 255, 255, 1),
+    6px 6px 10px rgba(0, 0, 0, 0.1);
+}
+.pagination li a:hover {
+  box-shadow: inset -6px -6px 10px rgba(255, 255, 255, 1),
+    inset 6px 6px 10px rgba(0, 0, 0, 0.1);
+}
 
 @media (max-width: 700px) {
   .product-card {
