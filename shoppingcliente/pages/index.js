@@ -23,7 +23,7 @@ const GET_PRODUCTS = gql`
 const Home = ({ setProducts }) => {
   const { data, loading } = useQuery(GET_PRODUCTS);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(2);
+  const [itemsPerPage] = useState(20);
 
   if (loading) return <h1>Loading...</h1>;
 
