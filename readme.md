@@ -8,7 +8,7 @@ _Following next instructions you will be able to run the project locally and hav
 
 ### Pre-requisites 📋
 
-_Before starting, you will need to have Node JS and MySql Workbench intalled in your computer._
+_Before starting, you will need to have Node JS and MySql Workbench installed in your computer._
 
 _Run next line to check if Node JS is installed._
 
@@ -34,7 +34,7 @@ _Once finished, start a command line inside shopping folder and then initiate np
 npm init
 ```
 
-_Once finished, start a command line inside shopping folder and then initiate npm._
+_Then, start a command line inside shopping folder and then initiate npm._
 
 ```
 npm init
