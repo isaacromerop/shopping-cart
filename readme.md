@@ -35,25 +35,25 @@ modify the username and the password of your own local environment._
 
 _Last, import the .sql file which contains the database Schema, tables and some dummy data._
 
-_Once finished, start a command line inside shopping folder and then initiate npm._
+_Once finished, start a terminal inside /shopping folder and then install all dependencies with:_
 
 ```
-npm init
+npm install
 ```
 
-_Then, start a command line inside shopping folder and then initiate npm._
+_Then, start a new terminal inside /shoppingcliente folder and then install all dependencies with:_
 
 ```
-npm init
+npm install
 ```
 
-_Now start the server using the next line of code._
+_Now inside /shopping folder start the server using the next line of code using your terminal._
 
 ```
 npm run dev
 ```
 
-_After that, open another commandline inside shoppingcliente folder and run the next:_
+_After that, open another terminal inside /shoppingcliente folder and run the next:_
 
 ```
 npm run dev
