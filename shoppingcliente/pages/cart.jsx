@@ -53,7 +53,7 @@ const Cart = ({ cart, setCurrentOrder, clearCart }) => {
         "Please provide your phone."
       ),
       email: Yup.string()
-        .email("please provide valid email.")
+        .email("Please provide valid email.")
         .required("Please provide your email."),
     }),
     onSubmit: async (values) => {
