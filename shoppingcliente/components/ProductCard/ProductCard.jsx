@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { addToCart } from "../../redux/Shopping/shopping-actions";
 import Cookie from "js-cookie";
 
 const ProductCard = ({ item, addToCart, cart }) => {
   const handleAdd = () => {
-    Cookie.set("cart", JSON.stringify(cart));
     addToCart(item.id);
   };
+
+  useEffect(() => {
+    Cookie.set("cart", JSON.stringify(cart), { expires: 1 });
+  }, [cart]);
 
   return (
     <div className="product-card">
