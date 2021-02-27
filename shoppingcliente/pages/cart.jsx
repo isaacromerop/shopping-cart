@@ -71,10 +71,12 @@ const Cart = ({ cart, setCurrentOrder, clearCart }) => {
             },
           },
         });
-        clearCart();
-        Cookie.remove("cart");
         setCurrentOrder(data.placeOrder.id, values.name);
-        router.push("/thankyou");
+        Cookie.remove("cart");
+        setTimeout(() => {
+          router.push("/thankyou");
+          clearCart();
+        }, 1500);
       } catch (error) {
         console.log(error);
       }
